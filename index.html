@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional portfolio of Mohammed Sahl, BCA Graduate.">
+  <title>Mohammed Sahl | BCA Graduate Portfolio</title>
+  <style>
+    :root {
+      --navy: #10233f;
+      --blue: #2563eb;
+      --cyan: #38bdf8;
+      --ink: #1e293b;
+      --muted: #64748b;
+      --paper: #f5f8fc;
+      --white: #ffffff;
+      --line: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: auto; }
+    header {
+      background: rgba(16,35,63,.97);
+      color: white;
+      position: sticky; top: 0; z-index: 10;
+      box-shadow: 0 5px 20px rgba(15,23,42,.12);
+    }
+    nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand { font-size: 1.15rem; font-weight: 800; letter-spacing: .4px; }
+    .brand span { color: var(--cyan); }
+    .nav-links { display: flex; gap: 25px; list-style: none; }
+    .nav-links a { color: #e2e8f0; font-size: .93rem; }
+    .nav-links a:hover { color: var(--cyan); }
+    .hero {
+      color: white;
+      background: radial-gradient(circle at 85% 20%, #24518a 0, transparent 32%),
+                  linear-gradient(125deg, #10233f, #173c68 65%, #155e75);
+      padding: 105px 0 100px;
+    }
+    .hero-content { max-width: 780px; }
+    .eyebrow {
+      color: #bae6fd; text-transform: uppercase; letter-spacing: 2px;
+      font-size: .8rem; font-weight: 700; margin-bottom: 16px;
+    }
+    h1 { font-size: clamp(2.7rem, 7vw, 5rem); line-height: 1.08; margin-bottom: 18px; }
+    h1 span { color: #7dd3fc; }
+    .hero p { color: #dbeafe; max-width: 650px; font-size: 1.12rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .btn {
+      display: inline-block; padding: 12px 21px; border-radius: 8px;
+      font-weight: 700; transition: .2s ease;
+    }
+    .btn-primary { background: #38bdf8; color: #082f49; }
+    .btn-primary:hover { background: #7dd3fc; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid #bfdbfe; color: white; }
+    .btn-outline:hover { background: rgba(255,255,255,.1); }
+    section { padding: 76px 0; }
+    .section-heading { margin-bottom: 32px; }
+    .section-heading .eyebrow { color: var(--blue); margin-bottom: 7px; }
+    h2 { color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.2; }
+    .section-intro { color: var(--muted); max-width: 700px; margin-top: 10px; }
+    .about-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 28px; align-items: stretch; }
+    .panel, .skill-card, .contact-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 15px; padding: 28px; box-shadow: 0 8px 24px rgba(15,23,42,.045);
+    }
+    .panel p + p { margin-top: 14px; }
+    .quick-facts { display: grid; gap: 15px; }
+    .fact-label { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; }
+    .fact-value { color: var(--navy); font-weight: 700; margin-top: 3px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .skill-card { text-align: center; padding: 23px 12px; }
+    .skill-icon {
+      width: 48px; height: 48px; margin: 0 auto 12px; display: grid;
+      place-items: center; border-radius: 13px; background: #eff6ff;
+      color: var(--blue); font-weight: 800; font-size: 1.1rem;
+    }
+    .skill-card h3 { color: var(--navy); font-size: 1rem; }
+    .education-card { display: flex; gap: 20px; align-items: flex-start; }
+    .education-mark {
+      flex: 0 0 54px; height: 54px; border-radius: 14px;
+      display: grid; place-items: center; background: #dbeafe;
+      color: #1d4ed8; font-weight: 800;
+    }
+    .education-card h3 { color: var(--navy); margin-bottom: 5px; }
+    .education-card p { color: var(--muted); }
+    .contact-section { background: #eaf1fa; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .contact-card h3 { font-size: .85rem; color: var(--muted); margin-bottom: 7px; }
+    .contact-card a, .contact-card p { color: var(--navy); font-weight: 700; overflow-wrap: anywhere; }
+    footer { background: var(--navy); color: #cbd5e1; padding: 24px 0; text-align: center; font-size: .9rem; }
+    @media (max-width: 800px) {
+      .skills-grid { grid-template-columns: repeat(3, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 15px 0; align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 15px; flex-wrap: wrap; }
+      .hero { padding: 75px 0; }
+      section { padding: 58px 0; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .education-card { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">MOHAMMED <span>SAHL</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div class="eyebrow">BCA Graduate · Aspiring IT Professional</div>
+        <h1>Hello, I'm<br><span>Mohammed Sahl.</span></h1>
+        <p>
+          I am a Bachelor of Computer Applications graduate with an interest in
+          programming, cloud computing and data-driven technology. I enjoy learning
+          new tools and applying technical knowledge to practical challenges.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Get in Touch</a>
+          <a class="btn btn-outline" href="#skills">Explore My Skills</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Introduction</div>
+          <h2>About Me</h2>
+          <p class="section-intro">A motivated graduate building a strong foundation in software development and modern IT technologies.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              I am Mohammed Sahl, a BCA graduate from Brindavan Group of Institutions,
+              Bengaluru. My technical interests include Python and Java programming,
+              C++, cloud computing and working with spreadsheets using Microsoft Excel.
+            </p>
+            <p>
+              I am keen to strengthen my technical abilities, gain practical industry
+              experience and contribute to a team through continuous learning,
+              problem-solving and a responsible approach to work.
+            </p>
+          </div>
+          <div class="panel quick-facts">
+            <div><div class="fact-label">Qualification</div><div class="fact-value">Bachelor of Computer Applications (BCA)</div></div>
+            <div><div class="fact-label">Institution</div><div class="fact-value">Brindavan Group of Institutions</div></div>
+            <div><div class="fact-label">Location</div><div class="fact-value">Bengaluru, Karnataka</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Technical Toolkit</div>
+          <h2>Technical Skills</h2>
+          <p class="section-intro">Core technologies and tools I have studied and am continuing to develop.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card"><div class="skill-icon">Py</div><h3>Python</h3></article>
+          <article class="skill-card"><div class="skill-icon">☁</div><h3>Cloud Computing</h3></article>
+          <article class="skill-card"><div class="skill-icon">X</div><h3>Microsoft Excel</h3></article>
+          <article class="skill-card"><div class="skill-icon">Ja</div><h3>Java</h3></article>
+          <article class="skill-card"><div class="skill-icon">C++</div><h3>C++</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Academic Background</div>
+          <h2>Education</h2>
+        </div>
+        <div class="panel education-card">
+          <div class="education-mark">BCA</div>
+          <div>
+            <h3>Bachelor of Computer Applications (BCA)</h3>
+            <p>Brindavan Group of Institutions</p>
+            <p>Dwaraka Nagar, Bagalur Main Road, Bengaluru</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Let's Connect</div>
+          <h2>Contact Me</h2>
+          <p class="section-intro">I welcome opportunities to learn, collaborate and begin my professional journey in the IT industry.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card"><h3>Phone</h3><a href="tel:8075094906">8075094906</a></div>
+          <div class="contact-card"><h3>Email</h3><a href="mailto:sahlmuthu086@gmail.com">sahlmuthu086@gmail.com</a></div>
+          <div class="contact-card"><h3>Address</h3><p>Dwaraka Nagar, Bagalur Main Road, Bengaluru</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year">2026</span> Mohammed Sahl. All rights reserved.</div>
+  </footer>
+</body>
+</html>
